@@ -1,6 +1,5 @@
 import {PathHandler} from "./path-handler";
-const fs = require('fs');
-
+import fs from "fs";
 
 export class FileHandler {
     static readJSON = (path: string, assets: boolean = false): any => {
@@ -24,7 +23,7 @@ export class FileHandler {
     };
 
     static create = (dir: string): void => {
-        fs. appendFileSync(PathHandler.fullPath(dir), '');
+        fs.appendFileSync(PathHandler.fullPath(dir), '');
     };
 
     static createDir = (dir: string): void => {

@@ -22,11 +22,11 @@ export class TypescriptHandler {
 
     static addScripts = (dir: string = '') => {
         const scripts = dir ? {
-            [`build-${dir}:tsc`]: `tsc -p ${TsConfig.getTsConfigName(dir)}`,
-            [`watch-${dir}:tsc`]: `tsc -w -p ${TsConfig.getTsConfigName(dir)}`
+            [`build-${dir}`]: `tsc -p ${TsConfig.getTsConfigName(dir)}`,
+            [`watch-${dir}`]: `tsc -w -p ${TsConfig.getTsConfigName(dir)}`
         } : {
-            "build:tsc": "tsc",
-            "watch:tsc": "tsc -w"
+            "build": "tsc",
+            "watch": "tsc -w"
         };
         PackageConfig.addScripts(scripts);
     };

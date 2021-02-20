@@ -1,6 +1,6 @@
 import {FileHandler} from "./file-handler";
 
-const FILE_PATH_WEB =  'tsc/tsconfig.web.json';
+const FILE_PATH_WEB = 'tsc/tsconfig.web.json';
 const FILE_PATH_NODE = 'tsc/tsconfig.node.json';
 
 export interface TsConfigModel {
@@ -8,7 +8,9 @@ export interface TsConfigModel {
 }
 
 export class TsConfig {
-    static getTsConfigName = (project: string|undefined): string => {
+    static
+
+    getTsConfigName = (project: string | undefined): string => {
         return project ? `tsconfig.${project}.json` : 'tsconfig.json';
     };
 

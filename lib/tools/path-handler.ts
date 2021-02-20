@@ -1,4 +1,4 @@
-const path = require('path');
+import path from "path";
 
 export class PathHandler {
     static fullPath = (dir: string, assets: boolean = false): string => {
