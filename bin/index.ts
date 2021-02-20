@@ -39,6 +39,7 @@ const WEB_PATH = 'web';
 FileHandler.createDir(SRC_PATH);
 
 if (options.npm) {
+    // add global config file for constants
     PackageConfig.setMain('index.js', SRC_PATH)
     NpmHandler.initialize();
 }
