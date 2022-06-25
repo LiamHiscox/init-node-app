@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-
-import {initNew, InitNewModel} from "../lib/newInit";
-import yargs, {Arguments} from 'yargs';
+import {initNew, InitNewModel} from "../lib/new-init.js";
+import yargs, {Arguments} from "yargs";
+import {hideBin} from "yargs/helpers";
 
 // TODO: add passing of list of npm packages to install (plus @types if tsc set to true)
-yargs
+yargs(hideBin(process.argv))
     .scriptName('init')
-    .command(
+    .command<InitNewModel>(
         'new <root>',
         'initialize a new nodejs project in the root folder',
         (yargs) => {
@@ -22,9 +22,7 @@ yargs
                 .option('n', {alias: 'npm', describe: 'Initializes NPM configuration', type: 'boolean', default: false})
                 .option('g', {alias: 'git', describe: 'Initializes empty git repository', type: 'boolean', default: false})
                 .option('t', {alias: 'tsc', describe: 'Initializes typescript configuration', type: 'boolean', default: false})
-                .option('d', {alias: 'docker', describe: 'Adds a docker-compose file', type: 'boolean', default: false})
                 .option('j', {alias: 'jest', describe: 'Adds jest for testing', type: 'boolean', default: false})
-                .option('html', {describe: 'Initializes HTML project', type: 'boolean', default: false})
         },
         (options: Arguments<InitNewModel>) => {
             initNew({ ...options, root: options.root.trim() })

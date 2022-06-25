@@ -1,6 +1,6 @@
-import {FileHandler} from "../tools/file-handler";
-import {ScriptRunner} from "../tools/script-runner";
-import {PathHandler} from "../tools/path-handler";
+import {FileHandler} from "../tools/file-handler.js";
+import {ScriptRunner} from "../tools/script-runner.js";
+import {PathHandler} from "../tools/path-handler.js";
 
 const INDEX_FILE = 'index.js';
 const INIT_SCRIPT = 'npm init -y';

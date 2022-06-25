@@ -1,14 +1,14 @@
-import {FileHandler} from "../tools/file-handler";
-import {PathHandler} from "../tools/path-handler";
-import {PackageConfig} from "../tools/package-config";
-import {TsConfig} from "../tools/ts-config";
-import {NpmHandler} from "./npm-handler";
+import {FileHandler} from "../tools/file-handler.js";
+import {PathHandler} from "../tools/path-handler.js";
+import {PackageConfig} from "../tools/package-config.js";
+import {TsConfig} from "../tools/ts-config.js";
+import {NpmHandler} from "./npm-handler.js";
 
 const EXCLUSION_LIST = ["node_modules", "**/*.test.ts", "**/*.spec.ts"];
 
 export class TypescriptHandler {
-    static initialize = (dir: string = '', web: boolean = false) => {
-        const configJSON = TsConfig.getTsConfigJSON(web);
+    static initialize = (dir: string = '') => {
+        const configJSON = TsConfig.getTsConfigJSON();
 
         const tsConfig = dir ? TsConfig.setTsConfigOption(configJSON, {
             "include": [`${dir}/**/*`],

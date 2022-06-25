@@ -1,5 +1,5 @@
-import {FileHandler} from "./file-handler";
-import {PathHandler} from "./path-handler";
+import {FileHandler} from "./file-handler.js";
+import {PathHandler} from "./path-handler.js";
 
 const FILE_NAME = 'package.json';
 

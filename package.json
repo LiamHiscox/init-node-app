@@ -1,12 +1,13 @@
 {
-  "name": "app-init",
+  "name": "node-init",
   "version": "1.0.0",
   "description": "",
   "main": "bin/index.js",
+  "type": "module",
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-    "run": "tsc && node ."
+    "run": "ts-node bin/index.ts"
   },
   "bin": {
     "init": "bin/index.js"
@@ -15,11 +16,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "typescript": "^4.1.5",
-    "yargs": "^16.1.1"
+    "typescript": "^4.7.4",
+    "yargs": "^17.5.1"
   },
   "devDependencies": {
-    "@types/node": "^14.14.31",
-    "@types/yargs": "^15.0.11"
+    "@types/node": "^16.11.41",
+    "@types/yargs": "^17.0.10",
+    "ts-node": "^10.8.1"
   }
 }

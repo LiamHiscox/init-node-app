@@ -1,35 +1,39 @@
 #!/usr/bin/env node
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var newInit_1 = require("../lib/newInit");
-var yargs_1 = __importDefault(require("yargs"));
+import { initNew } from "../lib/new-init.js";
+import yargs from "yargs";
+import { hideBin } from "yargs/helpers";
 // TODO: add passing of list of npm packages to install (plus @types if tsc set to true)
-yargs_1.default
+yargs(hideBin(process.argv))
     .scriptName('init')
     .command('new <root>', 'initialize a new nodejs project in the root folder', function (yargs) {
     yargs
         .positional('root', { describe: 'root folder of the project', type: 'string' })
-        .check(function (argv, options) {
-        console.log('options', options);
-        console.log('argv', argv);
-        return true;
+        .check(function (_a) {
+        var root = _a.root;
+        if (root && root.trim()) {
+            return true;
+        }
+        else {
+            throw new Error('Please Provide a valid name for the project');
+        }
     })
         .option('n', { alias: 'npm', describe: 'Initializes NPM configuration', type: 'boolean', default: false })
         .option('g', { alias: 'git', describe: 'Initializes empty git repository', type: 'boolean', default: false })
         .option('t', { alias: 'tsc', describe: 'Initializes typescript configuration', type: 'boolean', default: false })
-        .option('d', { alias: 'docker', describe: 'Adds a docker-compose file', type: 'boolean', default: false })
-        .option('j', { alias: 'jest', describe: 'Adds jest for testing', type: 'boolean', default: false })
-        .option('html', { describe: 'Initializes HTML project', type: 'boolean', default: false });
+        .option('j', { alias: 'jest', describe: 'Adds jest for testing', type: 'boolean', default: false });
 }, function (options) {
-    if (options.root && options.root.trim()) {
-        newInit_1.initNew(options);
-    }
-    else {
-        console.error('invalid project name given');
-    }
+    initNew(__assign(__assign({}, options), { root: options.root.trim() }));
 })
     .demandCommand(1, 1)
     .argv;

@@ -1,4 +1,4 @@
-import {PathHandler} from "./path-handler";
+import {PathHandler} from "./path-handler.js";
 import {execSync} from "child_process";
 
 export class ScriptRunner {

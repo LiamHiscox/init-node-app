@@ -1,2 +1,2 @@
-# app-init
+# node-init
 initalize a whole nodejs project with a single command

@@ -1,4 +1,4 @@
-import {PathHandler} from "./path-handler";
+import {PathHandler} from "./path-handler.js";
 import fs from "fs";
 
 export class FileHandler {
