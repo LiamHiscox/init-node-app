@@ -1,21 +1,28 @@
 {
-  "name": "node-init",
-  "version": "1.0.0",
+  "name": "init-node-app",
+  "version": "1.0.2",
   "description": "",
   "main": "bin/index.js",
-  "type": "module",
+  "types": "bin/index.d.ts",
+  "repository": "https://github.com/LiamHiscox/init-node-app",
+  "homepage": "https://github.com/LiamHiscox/init-node-app#node-init",
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
     "run": "ts-node bin/index.ts"
   },
   "bin": {
-    "init": "bin/index.js"
+    "init-node-app": "bin/index.js"
   },
-  "keywords": [],
+  "keywords": ["node", "nodejs", "init", "create", "app", "application", "create", "npm", "typescript", "git"],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@tsconfig/node10": "^1.0.9",
+    "@tsconfig/node12": "^1.0.11",
+    "@tsconfig/node14": "^1.0.3",
+    "@tsconfig/node16": "^1.0.3",
+    "chalk": "^4.1.2",
     "typescript": "^4.7.4",
     "yargs": "^17.5.1"
   },

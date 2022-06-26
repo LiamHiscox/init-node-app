@@ -1,5 +1,5 @@
-import {FileHandler} from "../tools/file-handler.js";
-import {ScriptRunner} from "../tools/script-runner.js";
+import {FileHandler} from "../tools/file-handler";
+import {ScriptRunner} from "../tools/script-runner";
 
 export class GitHandler {
     static initialize = () => {

@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+"use strict";
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -10,12 +11,15 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import { initNew } from "../lib/new-init.js";
-import yargs from "yargs";
-import { hideBin } from "yargs/helpers";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var new_init_1 = require("../lib/new-init");
+var yargs_1 = __importDefault(require("yargs"));
 // TODO: add passing of list of npm packages to install (plus @types if tsc set to true)
-yargs(hideBin(process.argv))
-    .scriptName('init')
+yargs_1.default
+    .scriptName('init-node-app')
     .command('new <root>', 'initialize a new nodejs project in the root folder', function (yargs) {
     yargs
         .positional('root', { describe: 'root folder of the project', type: 'string' })
@@ -31,9 +35,10 @@ yargs(hideBin(process.argv))
         .option('n', { alias: 'npm', describe: 'Initializes NPM configuration', type: 'boolean', default: false })
         .option('g', { alias: 'git', describe: 'Initializes empty git repository', type: 'boolean', default: false })
         .option('t', { alias: 'tsc', describe: 'Initializes typescript configuration', type: 'boolean', default: false })
-        .option('j', { alias: 'jest', describe: 'Adds jest for testing', type: 'boolean', default: false });
+        .option('j', { alias: 'jest', describe: 'Adds jest for testing', type: 'boolean', default: false })
+        .option('p', { alias: 'packages', describe: 'List of additional dependencies to install', type: 'array', default: [] });
 }, function (options) {
-    initNew(__assign(__assign({}, options), { root: options.root.trim() }));
+    (0, new_init_1.initNew)(__assign(__assign({}, options), { root: options.root.trim() }));
 })
     .demandCommand(1, 1)
     .argv;

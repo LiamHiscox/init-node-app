@@ -1,5 +1,5 @@
-import {FileHandler} from "./file-handler.js";
-import {PathHandler} from "./path-handler.js";
+import {FileHandler} from "./file-handler";
+import {PathHandler} from "./path-handler";
 
 const FILE_NAME = 'package.json';
 
@@ -35,9 +35,8 @@ export class PackageConfig {
         }
     }
 
-    static setMain = (name: string, dir: string = '') => {
+    static setMain = (name: string, dir: string) => {
         const packageJson = PackageConfig.getPackageJSON();
-
         if (packageJson) {
             const newPackageJson = {
                 ...packageJson,

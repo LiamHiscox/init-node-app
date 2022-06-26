@@ -1,32 +1,32 @@
-import {FileHandler} from "./file-handler.js";
-
-const FILE_PATH_NODE = 'tsconfig.node.json';
+import VersionHandler from "./version-handler";
+import defaultConfig from "../assets/tsconfig.default.json";
+import node10 from "@tsconfig/node10/tsconfig.json";
+import node12 from "@tsconfig/node12/tsconfig.json";
+import node14 from "@tsconfig/node14/tsconfig.json";
+import node16 from "@tsconfig/node16/tsconfig.json";
 
 export interface TsConfigModel {
-    [key: string]: any
+    [key: string]: any;
 }
 
-export class TsConfig {
-    static
+const nodeToConfigList: { version: number, config: TsConfigModel }[] = [
+    {version: 10, config: node10},
+    {version: 12, config: node12},
+    {version: 14, config: node14},
+    {version: 16, config: node16}
+];
 
-    getTsConfigName = (project: string | undefined): string => {
-        return project ? `tsconfig.${project}.json` : 'tsconfig.json';
-    };
+export class TsConfig {
+    static tsConfigName = 'tsconfig.json';
 
     static getTsConfigJSON = (): TsConfigModel => {
-        return FileHandler.readJSON(FILE_PATH_NODE, true);
+        const nodeMajorVersion = VersionHandler.parsedNodeVersion()[0];
+        return nodeToConfigList.reduce((bestConfig: TsConfigModel, {version, config}) =>
+            (nodeMajorVersion >= version ? config : bestConfig), defaultConfig);
     };
 
     static setTsConfigOption = (tsConfigJSON: TsConfigModel, tsConfig: TsConfigModel): TsConfigModel => ({
         ...tsConfigJSON,
         ...tsConfig
-    });
-
-    static setCompilerOptions = (tsConfigJSON: TsConfigModel, tsConfig: TsConfigModel): TsConfigModel => ({
-        ...tsConfigJSON,
-        compilerOptions: {
-            ...tsConfigJSON.compilerOptions,
-            ...tsConfig
-        }
     });
 }
