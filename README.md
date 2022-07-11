@@ -9,7 +9,7 @@ To use this package globally install as follows:
 ## Usage
 In order to initialize a Node.js application with NPM, Git, TypeScript and Jest correctly configured and Express installed run the following command:
 
-```init new my-node-app -ngtj -p express @types/express```
+```init-node-app new my-node-app -ngtj -p express @types/express```
 
 Following are all the available options:
 ```
@@ -20,4 +20,4 @@ Following are all the available options:
 -p, --packages  List of additional dependencies to install  [array] [default: []]
 ```
 For full information run the following command
-```init new --help```
+```init-node-app new --help```
